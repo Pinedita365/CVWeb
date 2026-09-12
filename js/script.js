@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSmoothScrollClose();
   setupScrollReveal();
   setupSkillBars();
+  setupCarousel();
 });
 
 /* Inserta las URLs de redes sociales en los enlaces correspondientes */
@@ -122,4 +123,69 @@ function setupSkillBars() {
   );
 
   bars.forEach((bar) => observer.observe(bar));
+}
+
+/* Carrusel de títulos: flechas, puntos de navegación y autoplay */
+function setupCarousel() {
+  const track = document.getElementById("carouselTrack");
+  const carousel = document.getElementById("titulosCarousel");
+  const dotsWrap = document.getElementById("carouselDots");
+  if (!track || !carousel || !dotsWrap) return;
+
+  const slides = Array.from(track.children);
+  const prevBtn = document.getElementById("carouselPrev");
+  const nextBtn = document.getElementById("carouselNext");
+  const AUTOPLAY_MS = 5000;
+  let current = 0;
+  let autoplayId = null;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "carousel-dot";
+    dot.setAttribute("aria-label", `Ir al título ${i + 1}`);
+    dot.addEventListener("click", () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle("is-active", i === current));
+  }
+
+  function next() {
+    goTo(current + 1);
+  }
+
+  function prev() {
+    goTo(current - 1);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayId = setInterval(next, AUTOPLAY_MS);
+  }
+
+  function stopAutoplay() {
+    if (autoplayId) clearInterval(autoplayId);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    next();
+    startAutoplay();
+  });
+  prevBtn.addEventListener("click", () => {
+    prev();
+    startAutoplay();
+  });
+
+  carousel.addEventListener("mouseenter", stopAutoplay);
+  carousel.addEventListener("mouseleave", startAutoplay);
+  carousel.addEventListener("focusin", stopAutoplay);
+  carousel.addEventListener("focusout", startAutoplay);
+
+  goTo(0);
+  startAutoplay();
 }

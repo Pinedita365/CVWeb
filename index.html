@@ -55,6 +55,7 @@
       <ul>
         <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
         <li><a href="#formacion" class="nav-link">Formación</a></li>
+        <li><a href="#titulos" class="nav-link">Títulos</a></li>
         <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
         <li><a href="#conocimientos" class="nav-link">Conocimientos</a></li>
         <li><a href="#redes" class="nav-link">Redes</a></li>
@@ -152,9 +153,60 @@
   </section>
 
   <!-- ======================================================================
+       SECCIÓN: CARRUSEL DE TÍTULOS
+  ====================================================================== -->
+  <section id="titulos" class="section reveal-section">
+    <div class="container">
+      <h2 class="section-title reveal-item">Mis títulos</h2>
+
+      <div class="carousel reveal-item" id="titulosCarousel">
+        <button type="button" class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Título anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carouselTrack">
+
+            <!-- SUSTITUYE ESTA IMAGEN POR EL ESCANEO/FOTO REAL DEL TÍTULO: assets/img/titulos/titulo-daw.jpg -->
+            <div class="carousel-slide">
+              <img src="assets/img/titulos/titulo-daw.jpg" alt="Título de DAW - I.E.S Ruiz Gijón" />
+              <p class="carousel-caption">DAW — I.E.S Ruiz Gijón</p>
+            </div>
+
+            <!-- SUSTITUYE ESTA IMAGEN POR EL ESCANEO/FOTO REAL DEL TÍTULO: assets/img/titulos/titulo-bachillerato.jpg -->
+            <div class="carousel-slide">
+              <img src="assets/img/titulos/titulo-bachillerato.jpg" alt="Título de Bachillerato Tecnológico - I.E.S Ponce de León" />
+              <p class="carousel-caption">Bachillerato Tecnológico — I.E.S Ponce de León</p>
+            </div>
+
+            <!-- SUSTITUYE ESTA IMAGEN POR EL ESCANEO/FOTO REAL DEL TÍTULO: assets/img/titulos/titulo-cambridge-b1.jpg -->
+            <div class="carousel-slide">
+              <img src="assets/img/titulos/titulo-cambridge-b1.jpg" alt="Certificado de Cambridge B1 - British Institute Sevilla" />
+              <p class="carousel-caption">Nivel B1 de inglés — British Institute Sevilla</p>
+            </div>
+
+            <!-- SUSTITUYE ESTA IMAGEN POR EL ESCANEO/FOTO REAL DEL TÍTULO: assets/img/titulos/titulo-eso.jpg -->
+            <div class="carousel-slide">
+              <img src="assets/img/titulos/titulo-eso.jpg" alt="Título de E.S.O - I.E.S Ponce de León" />
+              <p class="carousel-caption">E.S.O — I.E.S Ponce de León</p>
+            </div>
+
+          </div>
+        </div>
+
+        <button type="button" class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Título siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
        SECCIÓN: EXPERIENCIA LABORAL
   ====================================================================== -->
-  <section id="experiencia" class="section reveal-section">
+  <section id="experiencia" class="section section-alt reveal-section">
     <div class="container">
       <h2 class="section-title reveal-item">Experiencia laboral</h2>
       <div class="cards-grid">
@@ -227,7 +279,7 @@
   <!-- ======================================================================
        SECCIÓN: CONOCIMIENTOS / SKILLS
   ====================================================================== -->
-  <section id="conocimientos" class="section section-alt reveal-section">
+  <section id="conocimientos" class="section reveal-section">
     <div class="container">
       <h2 class="section-title reveal-item">Conocimientos</h2>
 
@@ -308,7 +360,7 @@
   <!-- ======================================================================
        SECCIÓN: REDES SOCIALES
   ====================================================================== -->
-  <section id="redes" class="section reveal-section">
+  <section id="redes" class="section section-alt reveal-section">
     <div class="container">
       <h2 class="section-title reveal-item">Redes sociales</h2>
       <div class="social-grid">
@@ -332,7 +384,7 @@
   <!-- ======================================================================
        SECCIÓN: PROYECTOS
   ====================================================================== -->
-  <section id="proyectos" class="section section-alt reveal-section">
+  <section id="proyectos" class="section reveal-section">
     <div class="container">
       <h2 class="section-title reveal-item">Proyectos</h2>
       <div class="cards-grid">
