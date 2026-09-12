@@ -2,8 +2,9 @@
    CONFIGURACIÓN — EDITA AQUÍ TUS ENLACES
    Cambia estas dos variables por las URLs reales de tus redes sociales.
 ========================================================================== */
-const LINKEDIN_URL = "www.linkedin.com/in/javi-pineda-28860b436"; // ej: https://www.linkedin.com/in/tu-usuario
+const LINKEDIN_URL = "https://www.linkedin.com/in/javi-pineda-28860b436"; // ej: https://www.linkedin.com/in/tu-usuario
 const INSTAGRAM_URL = "https://www.instagram.com/j_pinedaa06/"; // ej: https://www.instagram.com/tu-usuario
+const GITHUB_URL = "https://github.com/Pinedita365"; // ej: https://github.com/tu-usuario
 
 document.addEventListener("DOMContentLoaded", () => {
   wireSocialLinks();
@@ -25,9 +26,14 @@ function wireSocialLinks() {
     document.getElementById("instagramLink"),
     document.getElementById("footerInstagram"),
   ];
+  const githubLinks = [
+    document.getElementById("githubLink"),
+    document.getElementById("footerGithub"),
+  ];
 
   links.forEach((el) => el && (el.href = LINKEDIN_URL));
   instaLinks.forEach((el) => el && (el.href = INSTAGRAM_URL));
+  githubLinks.forEach((el) => el && (el.href = GITHUB_URL));
 }
 
 function setFooterYear() {
