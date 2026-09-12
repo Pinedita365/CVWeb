@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Javier Pineda Enrique — Currículum</title>
+<meta name="description" content="Portfolio y currículum de Javier Pineda Enrique, desarrollador web junior." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (iconos de UI / redes sociales) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Devicon (iconos de lenguajes y tecnologías) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.15.1/devicon.min.css">
+
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ======================================================================
+     HEADER FIJO (STICKY)
+====================================================================== -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+
+    <!--
+      ================================================================
+      IMPORTANTE — FOTO DE PERFIL
+      ================================================================
+      SUSTITUYE ESTE ARCHIVO POR TU FOTO REAL MANTENIENDO EL MISMO NOMBRE:
+      assets/img/foto-perfil.jpg
+      (No hace falta tocar este HTML, solo reemplaza el archivo de imagen)
+      ================================================================
+    -->
+    <div class="header-photo-wrap">
+      <img src="assets/img/foto-perfil.jpg" alt="Foto de perfil de Javier Pineda Enrique" class="header-photo" id="headerPhoto" />
+    </div>
+
+    <div class="header-name-wrap">
+      <h1 class="header-name" id="headerName">Javier Pineda Enrique</h1>
+      <p class="header-role">Desarrollador Web Junior</p>
+    </div>
+
+    <!-- Botón hamburguesa (móvil) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+        <li><a href="#formacion" class="nav-link">Formación</a></li>
+        <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+        <li><a href="#conocimientos" class="nav-link">Conocimientos</a></li>
+        <li><a href="#redes" class="nav-link">Redes</a></li>
+        <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ======================================================================
+       SECCIÓN: SOBRE MÍ
+  ====================================================================== -->
+  <section id="sobre-mi" class="section reveal-section">
+    <div class="container">
+      <h2 class="section-title reveal-item">Sobre mí</h2>
+      <div class="about-grid">
+        <p class="about-text reveal-item">
+          Soy un desarrollador web junior. Tengo facilidad comunicativa, sé expresar lo que pienso y
+          adaptar el mensaje al momento y a la persona. Tengo capacidad para organizar equipos, para
+          trabajar en ellos y para mediar en caso de que se originen desacuerdos. Analizo problemas de
+          manera lógica y crítica. Soy capaz de organizar mi tiempo y aprovecharlo al máximo. Tengo
+          facilidad de aprender nuevos conceptos y ganas de hacerlo. Tengo gran adaptabilidad al entorno
+          de trabajo y soy bastante sensato a la hora de trabajar. Soy bastante creativo y me gusta buscar
+          diferentes maneras de solucionar un mismo problema.
+        </p>
+        <ul class="about-data reveal-item">
+          <li><i class="fa-solid fa-user"></i> <span>Javier Pineda Enrique</span></li>
+          <li><i class="fa-solid fa-cake-candles"></i> <span>22/01/2006</span></li>
+          <li><i class="fa-solid fa-phone"></i> <span>664-43-24-24</span></li>
+          <li><i class="fa-solid fa-envelope"></i> <span>javiercoco2201@gmail.com</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SECCIÓN: FORMACIÓN ACADÉMICA (timeline)
+  ====================================================================== -->
+  <section id="formacion" class="section section-alt reveal-section">
+    <div class="container">
+      <h2 class="section-title reveal-item">Formación académica</h2>
+      <div class="timeline">
+
+        <div class="timeline-item reveal-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Actualmente</span>
+            <h3>I.E.S Ruiz Gijón</h3>
+            <p>Cursando segundo año de DAW (Desarrollo de Aplicaciones Web)</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2024</span>
+            <h3>I.E.S Ponce de León</h3>
+            <p>Graduado en Bachillerato Tecnológico</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2022</span>
+            <h3>British Institute Sevilla</h3>
+            <p>Nivel B1 de inglés (Certificado de Cambridge)</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2022</span>
+            <h3>I.E.S Ponce de León</h3>
+            <p>Graduado en E.S.O</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SECCIÓN: EXPERIENCIA LABORAL
+  ====================================================================== -->
+  <section id="experiencia" class="section reveal-section">
+    <div class="container">
+      <h2 class="section-title reveal-item">Experiencia laboral</h2>
+      <div class="cards-grid">
+
+        <!-- Ayesa Digital -->
+        <article class="card job-card reveal-item">
+          <span class="badge badge-current"><i class="fa-solid fa-circle-check"></i> Actualmente trabajando aquí</span>
+          <h3>Ayesa Digital</h3>
+          <span class="job-date">2026 — Actualidad</span>
+          <p>
+            Realicé las prácticas del segundo curso del ciclo formativo de DAW (3 meses), finalizando el
+            1 de junio de 2026, en esta empresa de desarrollo software. Tras finalizar las prácticas, la
+            empresa decidió contratarme y actualmente continúo trabajando en Ayesa Digital. Durante mi
+            etapa estuve enfocado en el proyecto Kronos, desarrollado en Java 8, donde realicé depuración
+            y modificación de código utilizando IntelliJ IDEA. También realicé pruebas del sistema de
+            Kronos y las documenté en Jira. Llevé a cabo cruces de datos mediante Excel y consultas en
+            base de datos con SQL, utilizando DBeaver como herramienta de gestión, con la cual también
+            accedí a Cassandra. Para el control de versiones utilicé Git junto con SourceTree, y además
+            trabajé con herramientas como SOAP y PuTTY.
+          </p>
+          <!-- SUSTITUYE ESTE LOGO POR EL LOGO REAL DE LA EMPRESA: assets/img/logos/ayesa.png -->
+          <div class="logo-wrap">
+            <div class="logo-box">
+              <img src="assets/img/logos/ayesa.png" alt="Logo de Ayesa Digital" class="company-logo" />
+            </div>
+          </div>
+        </article>
+
+        <!-- Valrog -->
+        <article class="card job-card reveal-item">
+          <h3>Valrog</h3>
+          <span class="job-date">2025</span>
+          <p>
+            Realicé las prácticas del primer curso del ciclo formativo de DAW (2 meses) en esta empresa
+            de programación. Estuve sobre todo enfocado en la base de datos de un proyecto de gestión de
+            animales perdidos "Lublu", donde diseñé y creé la base de datos del proyecto. También
+            participé en el diseño de la página. Para realizar la base de datos y enlazarla utilicé
+            lenguajes como SQL, PHP y Python.
+          </p>
+          <!-- SUSTITUYE ESTE LOGO POR EL LOGO REAL DE LA EMPRESA: assets/img/logos/valrog.png -->
+          <div class="logo-wrap">
+            <div class="logo-box">
+              <img src="assets/img/logos/valrog.png" alt="Logo de Valrog" class="company-logo" />
+            </div>
+          </div>
+        </article>
+
+        <!-- Telepizza -->
+        <article class="card job-card reveal-item">
+          <h3>Telepizza</h3>
+          <span class="job-date">2024 — 2025</span>
+          <p>
+            Ejercí durante 9 meses como repartidor en Telepizza. Dentro de ese periodo realicé
+            actividades de manipulación de alimentos, gestión de almacén y reparto de comida a domicilio.
+            Durante el último mes ejercí de encargado, gestionando las salidas de los repartidores y
+            haciendo inventario de los productos de la tienda.
+          </p>
+          <!-- SUSTITUYE ESTE LOGO POR EL LOGO REAL DE LA EMPRESA: assets/img/logos/telepizza.png -->
+          <div class="logo-wrap">
+            <div class="logo-box">
+              <img src="assets/img/logos/telepizza.png" alt="Logo de Telepizza" class="company-logo" />
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SECCIÓN: CONOCIMIENTOS / SKILLS
+  ====================================================================== -->
+  <section id="conocimientos" class="section section-alt reveal-section">
+    <div class="container">
+      <h2 class="section-title reveal-item">Conocimientos</h2>
+
+      <div class="skills-grid">
+
+        <div class="skills-category reveal-item">
+          <h3><i class="fa-solid fa-code"></i> Lenguajes</h3>
+          <ul class="skill-list">
+            <li><i class="devicon-java-plain colored"></i><span>Java</span></li>
+            <li><i class="devicon-php-plain colored"></i><span>PHP</span></li>
+            <li><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></li>
+          </ul>
+        </div>
+
+        <div class="skills-category reveal-item">
+          <h3><i class="fa-solid fa-display"></i> Frontend</h3>
+          <ul class="skill-list">
+            <li><i class="devicon-html5-plain colored"></i><span>HTML5</span></li>
+            <li><i class="devicon-css3-plain colored"></i><span>CSS3</span></li>
+            <li><i class="devicon-angularjs-plain colored"></i><span>Angular</span></li>
+            <li><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></li>
+          </ul>
+        </div>
+
+        <div class="skills-category reveal-item">
+          <h3><i class="fa-solid fa-server"></i> Backend</h3>
+          <ul class="skill-list">
+            <li><i class="devicon-spring-plain colored"></i><span>Spring Boot</span></li>
+            <li><i class="devicon-laravel-plain colored"></i><span>Laravel</span></li>
+          </ul>
+        </div>
+
+        <div class="skills-category reveal-item">
+          <h3><i class="fa-solid fa-database"></i> Bases de datos</h3>
+          <ul class="skill-list">
+            <li><i class="devicon-mysql-plain colored"></i><span>MySQL</span></li>
+            <li><i class="fa-solid fa-layer-group"></i><span>Cassandra</span></li>
+          </ul>
+        </div>
+
+        <div class="skills-category reveal-item">
+          <h3><i class="fa-solid fa-code-branch"></i> Control de versiones</h3>
+          <ul class="skill-list">
+            <li><i class="devicon-git-plain colored"></i><span>Git</span></li>
+            <li><i class="devicon-github-original colored"></i><span>GitHub</span></li>
+          </ul>
+        </div>
+
+        <div class="skills-category reveal-item">
+          <h3><i class="fa-solid fa-chart-column"></i> Big Data</h3>
+          <ul class="skill-list">
+            <li><i class="fa-solid fa-hive"></i><span>Hadoop</span></li>
+            <li><i class="fa-solid fa-diagram-project"></i><span>MapReduce</span></li>
+          </ul>
+          <p class="skill-note">Procesamiento y tratamiento de datos masivos.</p>
+        </div>
+
+      </div>
+
+      <div class="languages-block reveal-item">
+        <h3><i class="fa-solid fa-language"></i> Idiomas</h3>
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>Castellano</span><span>Nativo</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" data-percent="100"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>Inglés</span><span>Nivel B1 — Certificado de Cambridge</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" data-percent="60"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SECCIÓN: REDES SOCIALES
+  ====================================================================== -->
+  <section id="redes" class="section reveal-section">
+    <div class="container">
+      <h2 class="section-title reveal-item">Redes sociales</h2>
+      <div class="social-grid">
+        <!-- Los enlaces se definen como variables en js/script.js: LINKEDIN_URL e INSTAGRAM_URL -->
+        <a href="#" id="linkedinLink" target="_blank" rel="noopener noreferrer" class="social-card social-linkedin reveal-item">
+          <i class="fa-brands fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="#" id="instagramLink" target="_blank" rel="noopener noreferrer" class="social-card social-instagram reveal-item">
+          <i class="fa-brands fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SECCIÓN: PROYECTOS
+  ====================================================================== -->
+  <section id="proyectos" class="section section-alt reveal-section">
+    <div class="container">
+      <h2 class="section-title reveal-item">Proyectos</h2>
+      <div class="cards-grid">
+
+        <!-- SUSTITUYE EL HREF POR [PON_AQUI_EL_ENLACE_A_TU_PROYECTO] -->
+        <a href="#" class="project-card reveal-item">
+          <div class="project-card-body">
+            <h3>Proyecto Lublu</h3>
+            <p>Gestión de animales perdidos</p>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+
+        <!-- SUSTITUYE EL HREF POR [PON_AQUI_EL_ENLACE_A_TU_PROYECTO] -->
+        <a href="#" class="project-card reveal-item">
+          <div class="project-card-body">
+            <h3>Proyecto Kronos</h3>
+            <p>Sistema interno desarrollado en Java 8</p>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+
+        <!-- SUSTITUYE EL HREF POR [PON_AQUI_EL_ENLACE_A_TU_PROYECTO] -->
+        <a href="#" class="project-card reveal-item">
+          <div class="project-card-body">
+            <h3>Otro proyecto</h3>
+            <p>Descripción breve del proyecto</p>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================================================================
+     FOOTER
+====================================================================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-thanks">
+      Gracias de corazón por dedicar tu tiempo a leer mi currículum. Si crees que puedo encajar en tu
+      equipo o simplemente quieres charlar sobre alguna oportunidad, no dudes en contactarme.
+    </p>
+    <div class="footer-contact">
+      <a href="mailto:javiercoco2201@gmail.com"><i class="fa-solid fa-envelope"></i> javiercoco2201@gmail.com</a>
+      <a href="tel:664432424"><i class="fa-solid fa-phone"></i> 664-43-24-24</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" id="footerLinkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="#" id="footerInstagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <p class="footer-copy">&copy; <span id="footerYear"></span> Javier Pineda Enrique</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
