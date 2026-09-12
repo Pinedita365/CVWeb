@@ -514,6 +514,22 @@ ul {
   background: linear-gradient(135deg, var(--color-white), #eef4ff);
 }
 
+.project-card-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.project-logo {
+  height: 48px;
+  width: auto;
+  max-width: 88px;
+  object-fit: contain;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
 .project-card h3 {
   color: var(--color-primary);
   font-size: 1.05rem;
