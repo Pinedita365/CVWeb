@@ -302,6 +302,32 @@ ul {
   text-align: center;
 }
 
+.cv-download-wrap {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.98rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.cv-download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  background: var(--color-primary-light);
+}
+
 /* ==========================================================================
    TIMELINE (formación)
 ========================================================================== */
