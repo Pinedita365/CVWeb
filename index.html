@@ -158,56 +158,92 @@
   <section id="titulos" class="section reveal-section">
     <div class="container">
       <h2 class="section-title reveal-item">Mis títulos</h2>
+      <p class="carousel-subtitle reveal-item">Certificaciones y cursos completados — haz clic en uno para verlo en grande</p>
 
-      <div class="carousel reveal-item" id="titulosCarousel">
-        <button type="button" class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Título anterior">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
+      <div class="carousel-shell reveal-item" id="titulosCarousel">
+        <div class="carousel-stage">
+          <button type="button" class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Título anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
 
-        <div class="carousel-viewport">
-          <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack">
 
-            <div class="carousel-slide">
-              <img src="assets/img/titulos/1000192466.jpg" alt="Certificado de Iniciación al Desarrollo con IA - moureDev / BIG school" />
-              <p class="carousel-caption">Iniciación al Desarrollo con IA — BIG school</p>
+              <div class="carousel-slide">
+                <div class="carousel-card">
+                  <img src="assets/img/titulos/1000192466.jpg" alt="Certificado de Iniciación al Desarrollo con IA - moureDev / BIG school" />
+                  <span class="carousel-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                </div>
+                <p class="carousel-caption"><i class="fa-solid fa-award"></i> Iniciación al Desarrollo con IA — BIG school</p>
+              </div>
+
+              <div class="carousel-slide">
+                <div class="carousel-card">
+                  <img src="assets/img/titulos/OAuth.png" alt="Certificado Implementa OAuth 2.0 con Spring Security - OpenWebinars" />
+                  <span class="carousel-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                </div>
+                <p class="carousel-caption"><i class="fa-solid fa-award"></i> Implementa OAuth 2.0 con Spring Security — OpenWebinars</p>
+              </div>
+
+              <div class="carousel-slide">
+                <div class="carousel-card">
+                  <img src="assets/img/titulos/maquetacion.png" alt="Certificado Curso de maquetación web con CSS - OpenWebinars" />
+                  <span class="carousel-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                </div>
+                <p class="carousel-caption"><i class="fa-solid fa-award"></i> Maquetación web con CSS — OpenWebinars</p>
+              </div>
+
+              <div class="carousel-slide">
+                <div class="carousel-card">
+                  <img src="assets/img/titulos/js.png" alt="Certificado Fundamentos de JavaScript - OpenWebinars" />
+                  <span class="carousel-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                </div>
+                <p class="carousel-caption"><i class="fa-solid fa-award"></i> Fundamentos de JavaScript — OpenWebinars</p>
+              </div>
+
+              <div class="carousel-slide">
+                <div class="carousel-card">
+                  <img src="assets/img/titulos/image.png" alt="Certificado Curso de Git - OpenWebinars" />
+                  <span class="carousel-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                </div>
+                <p class="carousel-caption"><i class="fa-solid fa-award"></i> Curso de Git — OpenWebinars</p>
+              </div>
+
+              <div class="carousel-slide">
+                <div class="carousel-card">
+                  <img src="assets/img/titulos/SQL.png" alt="Certificado Curso de SQL desde Cero - OpenWebinars" />
+                  <span class="carousel-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                </div>
+                <p class="carousel-caption"><i class="fa-solid fa-award"></i> SQL desde Cero — OpenWebinars</p>
+              </div>
+
             </div>
-
-            <div class="carousel-slide">
-              <img src="assets/img/titulos/OAuth.png" alt="Certificado Implementa OAuth 2.0 con Spring Security - OpenWebinars" />
-              <p class="carousel-caption">Implementa OAuth 2.0 con Spring Security — OpenWebinars</p>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="assets/img/titulos/maquetacion.png" alt="Certificado Curso de maquetación web con CSS - OpenWebinars" />
-              <p class="carousel-caption">Maquetación web con CSS — OpenWebinars</p>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="assets/img/titulos/js.png" alt="Certificado Fundamentos de JavaScript - OpenWebinars" />
-              <p class="carousel-caption">Fundamentos de JavaScript — OpenWebinars</p>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="assets/img/titulos/image.png" alt="Certificado Curso de Git - OpenWebinars" />
-              <p class="carousel-caption">Curso de Git — OpenWebinars</p>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="assets/img/titulos/SQL.png" alt="Certificado Curso de SQL desde Cero - OpenWebinars" />
-              <p class="carousel-caption">SQL desde Cero — OpenWebinars</p>
-            </div>
-
           </div>
+
+          <button type="button" class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Título siguiente">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </div>
 
-        <button type="button" class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Título siguiente">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
+        <div class="carousel-meta">
+          <div class="carousel-progress">
+            <div class="carousel-progress-fill" id="carouselProgressFill"></div>
+          </div>
+          <span class="carousel-counter"><span id="carouselCurrent">1</span> / <span id="carouselTotal">6</span></span>
+        </div>
 
-      <div class="carousel-dots" id="carouselDots"></div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
     </div>
   </section>
+
+  <!-- Lightbox para ver los títulos en grande al hacer clic -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img src="" alt="" id="lightboxImg" class="lightbox-img" />
+  </div>
 
   <!-- ======================================================================
        SECCIÓN: EXPERIENCIA LABORAL

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupScrollReveal();
   setupSkillBars();
   setupCarousel();
+  setupLightbox();
 });
 
 /* Inserta las URLs de redes sociales en los enlaces correspondientes */
@@ -125,34 +126,51 @@ function setupSkillBars() {
   bars.forEach((bar) => observer.observe(bar));
 }
 
-/* Carrusel de títulos: flechas, puntos de navegación y autoplay */
+/* Carrusel de títulos: efecto "coverflow", contador, barra de progreso y autoplay */
 function setupCarousel() {
   const track = document.getElementById("carouselTrack");
+  const viewport = track && track.parentElement;
   const carousel = document.getElementById("titulosCarousel");
   const dotsWrap = document.getElementById("carouselDots");
-  if (!track || !carousel || !dotsWrap) return;
+  if (!track || !viewport || !carousel || !dotsWrap) return;
 
   const slides = Array.from(track.children);
   const prevBtn = document.getElementById("carouselPrev");
   const nextBtn = document.getElementById("carouselNext");
+  const progressFill = document.getElementById("carouselProgressFill");
+  const currentLabel = document.getElementById("carouselCurrent");
+  const totalLabel = document.getElementById("carouselTotal");
   const AUTOPLAY_MS = 5000;
   let current = 0;
   let autoplayId = null;
+
+  if (totalLabel) totalLabel.textContent = slides.length;
 
   slides.forEach((_, i) => {
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = "carousel-dot";
     dot.setAttribute("aria-label", `Ir al título ${i + 1}`);
-    dot.addEventListener("click", () => goTo(i));
+    dot.addEventListener("click", () => {
+      goTo(i);
+      startAutoplay();
+    });
     dotsWrap.appendChild(dot);
   });
   const dots = Array.from(dotsWrap.children);
 
+  function updatePosition() {
+    const slide = slides[current];
+    const offset = slide.offsetLeft - (viewport.clientWidth - slide.offsetWidth) / 2;
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
   function goTo(index) {
     current = (index + slides.length) % slides.length;
-    track.style.transform = `translateX(-${current * 100}%)`;
+    slides.forEach((slide, i) => slide.classList.toggle("is-active", i === current));
     dots.forEach((dot, i) => dot.classList.toggle("is-active", i === current));
+    if (currentLabel) currentLabel.textContent = current + 1;
+    updatePosition();
   }
 
   function next() {
@@ -163,13 +181,29 @@ function setupCarousel() {
     goTo(current - 1);
   }
 
+  function restartProgress() {
+    if (!progressFill) return;
+    progressFill.classList.remove("is-animating", "is-paused");
+    void progressFill.offsetWidth; // fuerza el reflow para reiniciar la animación
+    progressFill.style.animationDuration = `${AUTOPLAY_MS}ms`;
+    progressFill.classList.add("is-animating");
+  }
+
   function startAutoplay() {
     stopAutoplay();
+    restartProgress();
     autoplayId = setInterval(next, AUTOPLAY_MS);
+  }
+
+  function pauseAutoplay() {
+    if (autoplayId) clearInterval(autoplayId);
+    autoplayId = null;
+    if (progressFill) progressFill.classList.add("is-paused");
   }
 
   function stopAutoplay() {
     if (autoplayId) clearInterval(autoplayId);
+    autoplayId = null;
   }
 
   nextBtn.addEventListener("click", () => {
@@ -181,11 +215,47 @@ function setupCarousel() {
     startAutoplay();
   });
 
-  carousel.addEventListener("mouseenter", stopAutoplay);
+  carousel.addEventListener("mouseenter", pauseAutoplay);
   carousel.addEventListener("mouseleave", startAutoplay);
-  carousel.addEventListener("focusin", stopAutoplay);
+  carousel.addEventListener("focusin", pauseAutoplay);
   carousel.addEventListener("focusout", startAutoplay);
+
+  window.addEventListener("resize", updatePosition);
 
   goTo(0);
   startAutoplay();
+}
+
+/* Lightbox: amplía el título/certificado al hacer clic en su imagen */
+function setupLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = document.getElementById("lightboxClose");
+  if (!lightbox || !lightboxImg || !closeBtn) return;
+
+  function open(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".carousel-card img").forEach((img) => {
+    img.addEventListener("click", () => open(img.src, img.alt));
+  });
+
+  closeBtn.addEventListener("click", close);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
 }
