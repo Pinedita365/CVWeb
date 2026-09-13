@@ -1213,3 +1213,26 @@ ul {
     height: 76px;
   }
 }
+
+/* ==========================================================================
+   ACCESIBILIDAD: prefers-reduced-motion
+   Para quien tenga desactivadas las animaciones a nivel de sistema.
+========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-item {
+    opacity: 1;
+    transform: none;
+  }
+}

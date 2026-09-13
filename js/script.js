@@ -141,6 +141,7 @@ function setupCarousel() {
   const currentLabel = document.getElementById("carouselCurrent");
   const totalLabel = document.getElementById("carouselTotal");
   const AUTOPLAY_MS = 5000;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let current = 0;
   let autoplayId = null;
 
@@ -199,6 +200,7 @@ function setupCarousel() {
 
   function startAutoplay() {
     stopAutoplay();
+    if (prefersReducedMotion) return;
     restartProgress();
     autoplayId = setInterval(next, AUTOPLAY_MS);
   }
