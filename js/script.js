@@ -160,9 +160,17 @@ function setupCarousel() {
   const dots = Array.from(dotsWrap.children);
 
   function updatePosition() {
+    // Se calcula la posición sumando anchos/gaps en vez de usar slide.offsetLeft:
+    // el track tiene su propia transformación, y eso cambia a qué elemento se
+    // refiere offsetLeft, dando medidas inconsistentes según el momento.
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    let slideStart = 0;
+    for (let i = 0; i < current; i++) {
+      slideStart += slides[i].offsetWidth + gap;
+    }
     const slide = slides[current];
-    const offset = slide.offsetLeft - (viewport.clientWidth - slide.offsetWidth) / 2;
-    track.style.transform = `translateX(-${offset}px)`;
+    const offset = slideStart - (viewport.clientWidth - slide.offsetWidth) / 2;
+    track.style.transform = `translateX(${-offset}px)`;
   }
 
   function goTo(index) {
