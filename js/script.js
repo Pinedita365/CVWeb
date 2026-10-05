@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupHeaderShrink();
   setupMobileNav();
   setupSmoothScrollClose();
+  setupNavScrollSpy();
   setupScrollReveal();
   setupSkillBars();
   setupCarousel();
@@ -51,7 +52,6 @@ function setupHeaderShrink() {
   const onScroll = () => {
     const scrolled = window.scrollY > SCROLL_THRESHOLD;
     header.classList.toggle("scrolled", scrolled);
-    document.body.classList.toggle("header-shrink", scrolled);
   };
 
   onScroll();
@@ -67,6 +67,37 @@ function setupMobileNav() {
     const isOpen = nav.classList.toggle("open");
     toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     toggle.classList.toggle("is-active", isOpen);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.classList.remove("is-active");
+      toggle.focus();
+    }
+  });
+}
+
+/* Marca en el menú la sección que se está viendo (aria-current) */
+function setupNavScrollSpy() {
+  const links = new Map(
+    Array.from(document.querySelectorAll(".nav-link")).map((a) => [a.getAttribute("href").slice(1), a])
+  );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((a) => a.removeAttribute("aria-current"));
+        const link = links.get(entry.target.id);
+        if (link) link.setAttribute("aria-current", "true");
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  links.forEach((_, id) => {
+    const section = document.getElementById(id);
+    if (section) observer.observe(section);
   });
 }
 
@@ -140,10 +171,12 @@ function setupCarousel() {
   const progressFill = document.getElementById("carouselProgressFill");
   const currentLabel = document.getElementById("carouselCurrent");
   const totalLabel = document.getElementById("carouselTotal");
+  const pauseBtn = document.getElementById("carouselPause");
   const AUTOPLAY_MS = 5000;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let current = 0;
   let autoplayId = null;
+  let userPaused = false;
 
   if (totalLabel) totalLabel.textContent = slides.length;
 
@@ -200,7 +233,7 @@ function setupCarousel() {
 
   function startAutoplay() {
     stopAutoplay();
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || userPaused) return;
     restartProgress();
     autoplayId = setInterval(next, AUTOPLAY_MS);
   }
@@ -225,6 +258,23 @@ function setupCarousel() {
     startAutoplay();
   });
 
+  function setUserPaused(paused) {
+    userPaused = paused;
+    if (!pauseBtn) return;
+    pauseBtn.setAttribute("aria-pressed", paused ? "true" : "false");
+    pauseBtn.setAttribute("aria-label", paused ? "Reanudar el pase automático" : "Pausar el pase automático");
+    pauseBtn.querySelector("i").className = paused ? "fa-solid fa-play" : "fa-solid fa-pause";
+  }
+
+  if (pauseBtn) {
+    if (prefersReducedMotion) setUserPaused(true);
+    pauseBtn.addEventListener("click", () => {
+      setUserPaused(!userPaused);
+      if (userPaused) pauseAutoplay();
+      else startAutoplay();
+    });
+  }
+
   carousel.addEventListener("mouseenter", pauseAutoplay);
   carousel.addEventListener("mouseleave", startAutoplay);
   carousel.addEventListener("focusin", pauseAutoplay);
@@ -243,22 +293,29 @@ function setupLightbox() {
   const closeBtn = document.getElementById("lightboxClose");
   if (!lightbox || !lightboxImg || !closeBtn) return;
 
-  function open(src, alt) {
-    lightboxImg.src = src;
-    lightboxImg.alt = alt;
+  let opener = null;
+
+  function open(card) {
+    const img = card.querySelector("img");
+    opener = card;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = card.getAttribute("aria-label").replace(/^Ver en grande: /, "");
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    closeBtn.focus();
   }
 
   function close() {
+    if (!lightbox.classList.contains("is-open")) return;
     lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    if (opener) opener.focus();
   }
 
-  document.querySelectorAll(".carousel-card img").forEach((img) => {
-    img.addEventListener("click", () => open(img.src, img.alt));
+  document.querySelectorAll(".carousel-card").forEach((card) => {
+    card.addEventListener("click", () => open(card));
   });
 
   closeBtn.addEventListener("click", close);
@@ -266,6 +323,12 @@ function setupLightbox() {
     if (e.target === lightbox) close();
   });
   document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("is-open")) return;
     if (e.key === "Escape") close();
+    // El único control del diálogo es "Cerrar": el foco no sale de él
+    if (e.key === "Tab") {
+      e.preventDefault();
+      closeBtn.focus();
+    }
   });
 }
