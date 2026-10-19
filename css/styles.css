@@ -725,7 +725,9 @@ ul {
   }
 
   .carousel-slide {
-    width: min(420px, 80vw);
+    /* El ancho visible del carrusel en móvil es menor que la pantalla (flechas y márgenes): el título
+       ocupa justo ese ancho para no salir cortado por los lados. */
+    width: 100%;
   }
 
   .carousel-caption {
